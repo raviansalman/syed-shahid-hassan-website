@@ -1,101 +1,190 @@
 import Image from "next/image";
+import Link from "next/link";
+import Section from "@/components/Section";
+import ServiceCard from "@/components/ServiceCard";
+import FadeIn from "@/components/FadeIn";
+import WhatsAppButton from "@/components/WhatsAppButton";
+import InvestigationOverlay from "@/components/InvestigationOverlay";
+import {
+  bioShort,
+  credibilityStrip,
+  featuredVideo,
+  mediaItems,
+  services,
+} from "@/data/content";
+import { ArrowRight } from "lucide-react";
+
+function getYouTubeId(url: string) {
+  const match = url.match(/(?:v=|\/)([0-9A-Za-z_-]{11})(?:\?|&|$)/);
+  return match ? match[1] : "";
+}
 
 export default function Home() {
-  return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="https://nextjs.org/icons/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-semibold">
-              src/app/page.tsx
-            </code>
-            .
-          </li>
-          <li>Save and see your changes instantly.</li>
-        </ol>
+  const pressItems = mediaItems.filter((m) => m.type === "press");
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="https://nextjs.org/icons/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:min-w-44"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+  return (
+    <main>
+      {/* Hero */}
+      <Section className="pt-6 md:pt-10">
+        <div className="grid md:grid-cols-2 gap-6 items-center">
+          <FadeIn>
+            <div className="glass-strong rounded-3xl p-8 md:p-11 relative overflow-hidden">
+              <InvestigationOverlay />
+              <div className="absolute -top-20 -left-20 w-56 h-56 bg-gold/20 rounded-full blur-3xl" />
+              <div className="absolute -bottom-16 right-0 w-44 h-44 bg-sky-400/15 rounded-full blur-3xl" />
+              <div className="absolute top-1/3 right-1/4 w-32 h-32 bg-emerald-400/10 rounded-full blur-3xl" />
+              <p className="relative z-10 text-gold uppercase tracking-widest text-xs md:text-sm font-medium mb-4">
+                Former Additional Director, FIA
+              </p>
+              <h1 className="relative z-10 font-serif text-4xl md:text-5xl leading-tight mb-5 text-balance text-navy">
+                Decades of Service.
+                <br />
+                Now, <span className="text-gradient-gold">Shared with You.</span>
+              </h1>
+              <p className="relative z-10 text-charcoal/65 text-lg leading-relaxed mb-7 max-w-lg">
+                Since 1992, more than three decades investigating cybercrime and corruption
+                inside Pakistan&apos;s federal law enforcement system. Now mentoring the next
+                generation of CSS and PPSC aspirants, and advising institutions on cybercrime
+                and compliance.
+              </p>
+              <div className="relative z-10 flex flex-wrap gap-4">
+                <Link
+                  href="/book"
+                  className="glow-gold bg-gradient-to-br from-[#2563EB] to-[#1E3A8A] text-white px-6 py-3 rounded-xl font-medium hover:brightness-110 transition-all"
+                >
+                  Book a Session
+                </Link>
+                <Link
+                  href="/services"
+                  className="glass-sky text-sky-700 px-6 py-3 rounded-xl font-medium hover:bg-sky-50/60 backdrop-blur-xl transition-all"
+                >
+                  View Services
+                </Link>
+              </div>
+            </div>
+          </FadeIn>
+
+          <FadeIn delay={0.15}>
+            <div className="relative">
+              <div className="absolute -inset-3 bg-gradient-to-tr from-gold/25 via-transparent to-navy/10 rounded-[2rem] blur-2xl" />
+              <div className="relative glass-strong rounded-3xl p-3 aspect-[4/5] overflow-hidden glow-soft">
+                <div className="relative w-full h-full rounded-2xl overflow-hidden">
+                  <Image
+                    src="/images/headshot.png"
+                    alt="Syed Shahid Hassan, Former Additional Director, FIA"
+                    fill
+                    priority
+                    className="object-cover object-top"
+                  />
+                </div>
+              </div>
+            </div>
+          </FadeIn>
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
-    </div>
+      </Section>
+
+      {/* Credibility strip */}
+      <Section className="py-0 pb-8">
+        <FadeIn>
+          <div className="glass rounded-2xl px-6 py-5 flex flex-wrap justify-center gap-x-10 gap-y-3">
+            {credibilityStrip.map((item) => (
+              <span key={item} className="text-navy/60 font-medium text-sm uppercase tracking-wide">
+                {item}
+              </span>
+            ))}
+          </div>
+        </FadeIn>
+      </Section>
+
+      {/* About teaser */}
+      <Section className="max-w-3xl text-center">
+        <FadeIn>
+          <p className="text-lg leading-relaxed text-charcoal/70 mb-5">{bioShort}</p>
+          <Link
+            href="/about"
+            className="inline-flex items-center gap-1 text-gold font-medium hover:text-navy transition-colors"
+          >
+            Read Full Story <ArrowRight size={16} />
+          </Link>
+        </FadeIn>
+      </Section>
+
+      {/* Services grid */}
+      <Section>
+        <FadeIn>
+          <h2 className="font-serif text-3xl text-navy text-center mb-10">
+            How I Can <span className="text-gradient-gold">Help</span>
+          </h2>
+        </FadeIn>
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
+          {services.map((service, i) => (
+            <FadeIn key={service.slug} delay={i * 0.06}>
+              <ServiceCard service={service} />
+            </FadeIn>
+          ))}
+        </div>
+      </Section>
+
+      {/* Featured video */}
+      <Section>
+        <FadeIn>
+          <h2 className="font-serif text-3xl text-navy text-center mb-6">Featured Interview</h2>
+          <div className="max-w-3xl mx-auto glass-strong rounded-3xl p-3">
+            <div className="aspect-video rounded-2xl overflow-hidden">
+              <iframe
+                className="w-full h-full"
+                src={`https://www.youtube.com/embed/${getYouTubeId(featuredVideo.url)}`}
+                title={featuredVideo.title}
+                allowFullScreen
+              />
+            </div>
+          </div>
+          <p className="text-center text-charcoal/50 text-sm mt-3">{featuredVideo.title}</p>
+        </FadeIn>
+      </Section>
+
+      {/* Media mentions strip */}
+      <Section>
+        <FadeIn>
+          <h2 className="font-serif text-2xl text-navy text-center mb-6">As Featured In</h2>
+          <div className="flex flex-wrap justify-center gap-4">
+            {pressItems.map((item) => (
+              <a
+                key={item.url}
+                href={item.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="glass text-navy/70 hover:text-gold hover:border-gold/40 font-medium text-sm rounded-xl px-5 py-3 transition-all"
+              >
+                {item.platform}
+              </a>
+            ))}
+          </div>
+        </FadeIn>
+      </Section>
+
+      {/* CTA */}
+      <Section className="text-center">
+        <FadeIn>
+          <div className="glass-strong rounded-3xl p-10 md:p-14 relative overflow-hidden">
+            <InvestigationOverlay />
+            <div className="absolute -bottom-28 right-1/4 w-72 h-72 bg-gold/15 rounded-full blur-3xl" />
+            <div className="absolute -top-20 left-1/4 w-56 h-56 bg-emerald-400/12 rounded-full blur-3xl" />
+            <h2 className="relative z-10 font-serif text-3xl md:text-4xl text-navy mb-6 text-balance max-w-2xl mx-auto">
+              Ready to get guidance from someone who&apos;s been inside the system?
+            </h2>
+            <div className="relative z-10 flex flex-wrap gap-4 justify-center">
+              <Link
+                href="/book"
+                className="inline-block glow-gold bg-gradient-to-br from-[#2563EB] to-[#1E3A8A] text-white px-8 py-3.5 rounded-xl font-medium hover:brightness-110 transition-all"
+              >
+                Book a Session
+              </Link>
+              <WhatsAppButton />
+            </div>
+          </div>
+        </FadeIn>
+      </Section>
+    </main>
   );
 }

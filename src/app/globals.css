@@ -2,26 +2,128 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+@layer base {
+  body {
+    background-color: #EDF1F6;
+    background-image:
+      /* fine dot-matrix texture (cyber/data terminal feel) */
+      radial-gradient(rgba(11, 31, 69, 0.12) 1px, transparent 1.4px),
+      /* tactical grid lines (investigation board feel) */
+      linear-gradient(rgba(11, 31, 69, 0.06) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(11, 31, 69, 0.06) 1px, transparent 1px),
+      /* bold color presence */
+      radial-gradient(circle at 6% 4%, rgba(37, 99, 235, 0.26), transparent 42%),
+      radial-gradient(circle at 96% 6%, rgba(16, 185, 129, 0.20), transparent 42%),
+      radial-gradient(circle at 22% 94%, rgba(8, 145, 178, 0.18), transparent 45%),
+      radial-gradient(circle at 90% 88%, rgba(220, 38, 38, 0.14), transparent 45%),
+      linear-gradient(160deg, #F2F5F9 0%, #ECF0F5 50%, #E6EBF1 100%);
+    background-size: 20px 20px, 56px 56px, 56px 56px, auto, auto, auto, auto, auto;
+    background-attachment: fixed;
+    min-height: 100vh;
+    animation: bg-drift 22s ease-in-out infinite alternate;
   }
-}
 
-body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+  @keyframes bg-drift {
+    0% {
+      background-position: 0px 0px, 0px 0px, 0px 0px, 0 0, 0 0, 0 0, 0 0, 0 0;
+    }
+    100% {
+      background-position: 10px 10px, 28px 28px, 28px 28px, 0 0, 0 0, 0 0, 0 0, 0 0;
+    }
+  }
 }
 
 @layer utilities {
   .text-balance {
     text-wrap: balance;
+  }
+
+  .glass {
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.72), rgba(255, 255, 255, 0.42));
+    backdrop-filter: blur(20px) saturate(160%);
+    -webkit-backdrop-filter: blur(20px) saturate(160%);
+    border: 1px solid rgba(255, 255, 255, 0.65);
+    box-shadow: 0 8px 32px -12px rgba(11, 31, 69, 0.14), inset 0 1px 0 rgba(255, 255, 255, 0.5);
+  }
+
+  .glass-strong {
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.85), rgba(255, 255, 255, 0.55));
+    backdrop-filter: blur(28px) saturate(180%);
+    -webkit-backdrop-filter: blur(28px) saturate(180%);
+    border: 1px solid rgba(255, 255, 255, 0.75);
+    box-shadow: 0 16px 48px -16px rgba(11, 31, 69, 0.18), inset 0 1px 0 rgba(255, 255, 255, 0.6);
+  }
+
+  /* Brand accent glass (deep cobalt blue, not the old gold/indigo) */
+  .glass-gold {
+    background: linear-gradient(135deg, rgba(37, 99, 235, 0.18), rgba(30, 58, 138, 0.08));
+    backdrop-filter: blur(20px) saturate(160%);
+    -webkit-backdrop-filter: blur(20px) saturate(160%);
+    border: 1px solid rgba(37, 99, 235, 0.35);
+  }
+
+  .glass-navy {
+    background: linear-gradient(135deg, rgba(11, 31, 69, 0.92), rgba(11, 31, 69, 0.8));
+    backdrop-filter: blur(20px) saturate(160%);
+    -webkit-backdrop-filter: blur(20px) saturate(160%);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+  }
+
+  .text-gradient-gold {
+    background-image: linear-gradient(90deg, #2563EB, #1E3A8A 60%, #2563EB);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  .glow-gold {
+    box-shadow: 0 0 0 1px rgba(37, 99, 235, 0.35), 0 8px 30px -8px rgba(37, 99, 235, 0.5);
+  }
+
+  .glow-soft {
+    box-shadow: 0 12px 40px -12px rgba(11, 31, 69, 0.18);
+  }
+
+  /* Bold tinted glass chips, used for service icon badges & accents */
+  .glass-emerald {
+    background: linear-gradient(135deg, rgba(16, 185, 129, 0.22), rgba(16, 185, 129, 0.06));
+    border: 1px solid rgba(16, 185, 129, 0.35);
+  }
+  .glass-sky {
+    background: linear-gradient(135deg, rgba(56, 130, 246, 0.22), rgba(56, 130, 246, 0.06));
+    border: 1px solid rgba(56, 130, 246, 0.35);
+  }
+  .glass-crimson {
+    background: linear-gradient(135deg, rgba(220, 38, 38, 0.22), rgba(220, 38, 38, 0.06));
+    border: 1px solid rgba(220, 38, 38, 0.35);
+  }
+  .glass-slate {
+    background: linear-gradient(135deg, rgba(71, 85, 105, 0.22), rgba(71, 85, 105, 0.06));
+    border: 1px solid rgba(71, 85, 105, 0.35);
+  }
+  .glass-cyan {
+    background: linear-gradient(135deg, rgba(8, 145, 178, 0.22), rgba(8, 145, 178, 0.06));
+    border: 1px solid rgba(8, 145, 178, 0.35);
+  }
+
+  .glow-emerald { box-shadow: 0 0 0 1px rgba(16, 185, 129, 0.3), 0 8px 28px -8px rgba(16, 185, 129, 0.5); }
+  .glow-sky { box-shadow: 0 0 0 1px rgba(56, 130, 246, 0.3), 0 8px 28px -8px rgba(56, 130, 246, 0.5); }
+  .glow-crimson { box-shadow: 0 0 0 1px rgba(220, 38, 38, 0.3), 0 8px 28px -8px rgba(220, 38, 38, 0.5); }
+  .glow-slate { box-shadow: 0 0 0 1px rgba(71, 85, 105, 0.3), 0 8px 28px -8px rgba(71, 85, 105, 0.5); }
+  .glow-cyan { box-shadow: 0 0 0 1px rgba(8, 145, 178, 0.3), 0 8px 28px -8px rgba(8, 145, 178, 0.5); }
+
+  .text-gradient-emerald {
+    background-image: linear-gradient(90deg, #10B981, #059669 60%, #10B981);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  .glass-whatsapp {
+    background: linear-gradient(135deg, rgba(37, 211, 102, 0.85), rgba(18, 140, 65, 0.75));
+    backdrop-filter: blur(16px) saturate(180%);
+    -webkit-backdrop-filter: blur(16px) saturate(180%);
+    border: 1px solid rgba(255, 255, 255, 0.35);
+    box-shadow: 0 0 0 1px rgba(37, 211, 102, 0.25), 0 10px 32px -10px rgba(37, 211, 102, 0.55), inset 0 1px 0 rgba(255, 255, 255, 0.4);
   }
 }

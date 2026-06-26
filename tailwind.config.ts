@@ -9,8 +9,19 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        background: "var(--background)",
-        foreground: "var(--foreground)",
+        navy: "#0B1F45",
+        // Brand accent — kept the `gold` token name (used across components)
+        // but the color itself is a bold cobalt blue, not yellow/gold.
+        gold: "#2563EB",
+        cream: "#F9F7F2",
+        charcoal: "#1A1A2E",
+      },
+      fontFamily: {
+        serif: ["var(--font-playfair)", "Georgia", "serif"],
+        sans: ["var(--font-inter)", "system-ui", "sans-serif"],
+      },
+      borderRadius: {
+        card: "8px",
       },
     },
   },
