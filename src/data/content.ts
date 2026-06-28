@@ -117,6 +117,7 @@ export const achievements: string[] = [
   "Public Speaking & Media Engagements: a recurring voice in national television interviews and conference panels, speaking on cybercrime, governance, and law enforcement reform.",
   "Digital Economy & Blockchain Advisor: advises on regulatory approaches to the digital economy, blockchain, and cryptocurrency, bridging law enforcement experience with emerging financial technology policy.",
   "Multi-Domain Cybercrime Specialist: maintains hands-on expertise across multiple domains of cybercrime investigation, from financial fraud and digital evidence handling to online exploitation and emerging cyber-enabled threats.",
+  "International & Embassy Consultant: has worked as an independent contractor for foreign embassies and missions, supporting cross-border cybercrime investigations, field operations, and international case consultation.",
 ];
 
 export type MediaItem = {
@@ -314,6 +315,42 @@ export const credibilityStrip = [
   "French Police",
   "CBI India",
   "Since 1992",
+  "International Embassies",
+];
+
+export type EmbassyCapability = {
+  title: string;
+  description: string;
+};
+
+export const embassyCapabilities: EmbassyCapability[] = [
+  {
+    title: "Cybercrime Case Investigation",
+    description:
+      "Independent investigation support for embassies and missions handling cybercrime cases involving their nationals, staff, or interests abroad.",
+  },
+  {
+    title: "Cross-Border Investigations",
+    description:
+      "Coordination across jurisdictions where digital evidence, suspects, or victims span more than one country, drawing on three decades of FIA cybercrime casework.",
+  },
+  {
+    title: "Field Operations",
+    description:
+      "On-ground field investigation support, evidence coordination, and liaison with local law enforcement on sensitive cross-border matters.",
+  },
+  {
+    title: "International Consultation",
+    description:
+      "Confidential advisory for diplomatic missions, international organizations, and multinational entities navigating cyber-enabled crime, fraud, or digital risk with a cross-jurisdiction dimension.",
+  },
+];
+
+export const embassyAudience = [
+  "Embassies & diplomatic missions",
+  "International law firms handling cross-border cases",
+  "Multinational corporations facing cross-jurisdiction cybercrime",
+  "International organizations & NGOs operating in Pakistan",
 ];
 
 export const bioShort =
@@ -331,7 +368,9 @@ In January 2019, he was elevated to Additional Director, a position he has held 
 
 Beyond the badge, his time in Canada included volunteer work with the Burnaby Association for Community Inclusion, supporting people with developmental disabilities, a detail that says as much about his character as his case file does about his competence.
 
-As he steps back from full-time service, he is turning that experience outward: mentoring the next generation of CSS and PPSC aspirants, training institutions on cybercrime and PECA compliance, and advising organizations on anti-corruption matters and forensic investigation. His advisory work has also grown alongside the technology he once investigated, now extending into the digital economy, blockchain, and cryptocurrency regulation, in addition to hands-on expertise across multiple domains of cybercrime.`;
+As he steps back from full-time service, he is turning that experience outward: mentoring the next generation of CSS and PPSC aspirants, training institutions on cybercrime and PECA compliance, and advising organizations on anti-corruption matters and forensic investigation. His advisory work has also grown alongside the technology he once investigated, now extending into the digital economy, blockchain, and cryptocurrency regulation, in addition to hands-on expertise across multiple domains of cybercrime.
+
+His work has also extended beyond Pakistan's borders. As an independent contractor, he has supported foreign embassies and missions on cybercrime case investigation, field operations, and cross-border cases, and provides consultation on international matters where digital crime, law enforcement, and diplomacy intersect.`;
 
 export const pullQuote =
   "I spent my career inside a system most people only see from the outside. Now I want to help the next generation understand it, and get into it, the right way.";

@@ -4,6 +4,7 @@ import "./globals.css";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { WhatsAppFloatingButton } from "@/components/WhatsAppButton";
+import GlobalNetworkBackground from "@/components/GlobalNetworkBackground";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -33,10 +34,13 @@ export default function RootLayout({
       <body
         className={`${inter.variable} ${playfair.variable} font-sans antialiased text-charcoal selection:bg-gold/30 selection:text-navy`}
       >
-        <Navbar />
-        {children}
-        <Footer />
-        <WhatsAppFloatingButton />
+        <GlobalNetworkBackground className="fixed inset-0 z-0" intensity="subtle" />
+        <div className="relative z-10">
+          <Navbar />
+          {children}
+          <Footer />
+          <WhatsAppFloatingButton />
+        </div>
       </body>
     </html>
   );

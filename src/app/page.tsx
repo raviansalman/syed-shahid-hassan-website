@@ -5,8 +5,10 @@ import ServiceCard from "@/components/ServiceCard";
 import FadeIn from "@/components/FadeIn";
 import WhatsAppButton from "@/components/WhatsAppButton";
 import InvestigationOverlay from "@/components/InvestigationOverlay";
+import AnimatedCounter from "@/components/AnimatedCounter";
 import {
   bioShort,
+  credentials,
   credibilityStrip,
   featuredVideo,
   mediaItems,
@@ -34,18 +36,19 @@ export default function Home() {
               <div className="absolute -bottom-16 right-0 w-44 h-44 bg-sky-400/15 rounded-full blur-3xl" />
               <div className="absolute top-1/3 right-1/4 w-32 h-32 bg-emerald-400/10 rounded-full blur-3xl" />
               <p className="relative z-10 text-gold uppercase tracking-widest text-xs md:text-sm font-medium mb-4">
-                Former Additional Director, FIA
+                Former Additional Director, FIA &middot; International Consultant
               </p>
               <h1 className="relative z-10 font-serif text-4xl md:text-5xl leading-tight mb-5 text-balance text-navy">
                 Decades of Service.
                 <br />
-                Now, <span className="text-gradient-gold">Shared with You.</span>
+                Now, <span className="text-gradient-gold">Shared Globally.</span>
               </h1>
               <p className="relative z-10 text-charcoal/65 text-lg leading-relaxed mb-7 max-w-lg">
                 Since 1992, more than three decades investigating cybercrime and corruption
-                inside Pakistan&apos;s federal law enforcement system. Now mentoring the next
-                generation of CSS and PPSC aspirants, and advising institutions on cybercrime
-                and compliance.
+                inside Pakistan&apos;s federal law enforcement system, now extending to embassies
+                and international missions on cross-border cases. He mentors the next generation
+                of CSS and PPSC aspirants, and advises institutions on cybercrime, compliance, and
+                digital economy matters.
               </p>
               <div className="relative z-10 flex flex-wrap gap-4">
                 <Link
@@ -59,6 +62,12 @@ export default function Home() {
                   className="glass-sky text-sky-700 px-6 py-3 rounded-xl font-medium hover:bg-sky-50/60 backdrop-blur-xl transition-all"
                 >
                   View Services
+                </Link>
+                <Link
+                  href="/embassy-consultation"
+                  className="glass-cyan text-cyan-700 px-6 py-3 rounded-xl font-medium hover:bg-cyan-50/60 backdrop-blur-xl transition-all"
+                >
+                  Embassy Consultation
                 </Link>
               </div>
             </div>
@@ -78,6 +87,34 @@ export default function Home() {
                   />
                 </div>
               </div>
+            </div>
+          </FadeIn>
+        </div>
+      </Section>
+
+      {/* Stat strip */}
+      <Section className="py-0 pb-6">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-4xl mx-auto">
+          {[
+            { value: 34, suffix: "+", label: "Years of Service" },
+            { value: services.length, suffix: "", label: "Specialist Service Areas" },
+            { value: credentials.length, suffix: "", label: "International Training Credentials" },
+          ].map((stat, i) => (
+            <FadeIn key={stat.label} delay={i * 0.06}>
+              <div className="glass rounded-2xl p-5 text-center h-full">
+                <p className="font-serif text-3xl md:text-4xl text-gradient-gold mb-1">
+                  <AnimatedCounter to={stat.value} suffix={stat.suffix} />
+                </p>
+                <p className="text-charcoal/55 text-xs md:text-sm uppercase tracking-wide">{stat.label}</p>
+              </div>
+            </FadeIn>
+          ))}
+          <FadeIn delay={0.18}>
+            <div className="glass rounded-2xl p-5 text-center h-full flex flex-col items-center justify-center">
+              <p className="font-serif text-3xl md:text-4xl text-gradient-gold mb-1">Global</p>
+              <p className="text-charcoal/55 text-xs md:text-sm uppercase tracking-wide">
+                Embassy &amp; Cross-Border Engagements
+              </p>
             </div>
           </FadeIn>
         </div>

@@ -5,6 +5,7 @@ import Timeline from "@/components/Timeline";
 import FadeIn from "@/components/FadeIn";
 import SectionTabs from "@/components/SectionTabs";
 import InvestigationOverlay from "@/components/InvestigationOverlay";
+import GlobalNetworkBackground from "@/components/GlobalNetworkBackground";
 import { achievements, bioFull, credentials, pullQuote } from "@/data/content";
 import { Shield, Globe2, Gavel, FileSearch, GraduationCap, HeartHandshake, Award, Mic, Coins, Network } from "lucide-react";
 
@@ -38,8 +39,9 @@ const achievementAccents = [
 
 export default function AboutPage() {
   return (
-    <main>
-      <Section className="pt-6 md:pt-8 pb-4">
+    <main className="relative">
+      <GlobalNetworkBackground className="fixed inset-0 z-0" intensity="prominent" />
+      <Section className="pt-6 md:pt-8 pb-4 relative z-10">
         <FadeIn>
           <div className="glass-strong rounded-3xl p-10 md:p-14 text-center relative overflow-hidden">
             <InvestigationOverlay />
@@ -52,11 +54,11 @@ export default function AboutPage() {
         </FadeIn>
       </Section>
 
-      <div className="max-w-6xl mx-auto px-4 md:px-6">
+      <div className="relative z-10 max-w-6xl mx-auto px-4 md:px-6">
         <SectionTabs items={tabs} />
       </div>
 
-      <Section id="biography" className="max-w-5xl scroll-mt-24">
+      <Section id="biography" className="relative z-10 max-w-5xl scroll-mt-24">
         <div className="grid md:grid-cols-[280px_1fr] gap-8">
           <FadeIn>
             <div className="relative glass-strong rounded-2xl p-2 aspect-[4/5] h-fit glow-gold">
@@ -88,7 +90,7 @@ export default function AboutPage() {
         </FadeIn>
       </Section>
 
-      <Section id="timeline" className="scroll-mt-24">
+      <Section id="timeline" className="relative z-10 scroll-mt-24">
         <FadeIn>
           <h2 className="font-serif text-3xl text-navy mb-6 text-center">Career Timeline</h2>
         </FadeIn>
@@ -97,7 +99,7 @@ export default function AboutPage() {
         </div>
       </Section>
 
-      <Section id="education" className="scroll-mt-24">
+      <Section id="education" className="relative z-10 scroll-mt-24">
         <FadeIn>
           <h2 className="font-serif text-3xl text-navy mb-6 text-center">
             Education, Certifications & <span className="text-gradient-gold">International Training</span>
@@ -124,7 +126,7 @@ export default function AboutPage() {
         </FadeIn>
       </Section>
 
-      <Section id="achievements" className="scroll-mt-24">
+      <Section id="achievements" className="relative z-10 scroll-mt-24">
         <FadeIn>
           <h2 className="font-serif text-3xl text-navy mb-6 text-center">Key Achievements</h2>
         </FadeIn>
